@@ -1,0 +1,31 @@
+<div class="grid heading">
+  <div class="grid wrap">
+    <div class=" unit whole">
+      <h1>Orders</h1>
+    </div>
+  </div>
+</div>
+
+<div class="grid wrap">
+  <div class="unit whole">
+    <p id="notice"><%= flash[:notice] %></p>
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
+</div>
+
+<table>
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%= order.vendor.name %></td>
+    <td><%= order.location.address %></td>
+    <td><%= link_to 'Show', order %></td>
+    <td><%= link_to 'Edit', edit_order_path(order) %></td>
+    <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= render @vendors %>
+
+
+<br>

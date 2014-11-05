@@ -1,0 +1,9 @@
+<h1>Orders#show</h1>
+
+    <ul>
+      <% @order.line_items.each do |line_item| %>
+      <li><%= line_item.id %></li>
+      <li><%= line_item.product_sku %></li>
+      <li><%= line_item.product_description %></li>
+      <% end %>
+    </ul>

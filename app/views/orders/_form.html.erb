@@ -1,0 +1,41 @@
+<%= form_for (@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div class="grid wrap">
+      <div class="unit wwhole error">
+        <h2><%= pluralize(@order.errors.count, "error") %> prohibited this job from being saved:</h2>
+        <ul>
+          <% @order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid wrap">
+    <div class="unit one-fifth">
+      <%= f.label :location, "Location" %>
+    </div>
+    <div class="unit four-fifths">
+      <%= collection_select( :order, :location_id, @locations, :id, :address ) %>
+    </div>
+    <div class="unit one-fifth">
+      <%= f.label :vendor, "Vendor" %>
+    </div>
+    <div class="unit four-fifths">
+      <%= collection_select( :order, :vendor_id, @vendors, :id, :name ) %>
+    </div>
+    <div class="unit one-fifth">
+      <%= f.label :vendor, "Vendor" %><br>
+    </div>
+      <%= f.fields_for :line_items do |line_item| %>
+        <%= line_item.label :product_sku %>
+        <%= line_item.text_field :product_sku %></br>
+        <%= line_item.label :product_description %>
+        <%= line_item.text_field :product_description %>
+      <% end %>
+  </div> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

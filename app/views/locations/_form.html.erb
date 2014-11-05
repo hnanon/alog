@@ -1,0 +1,44 @@
+<%= form_for (@location) do |f| %>
+  <% if @location.errors.any? %>
+    <div class="grid wrap">
+      <div class="unit wwhole error">
+        <h2><%= pluralize(@location.errors.count, "error") %> prohibited this job from being saved:</h2>
+        <ul>
+          <% @location.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid wrap">
+    <div class="unit one-fifth">
+      <%= f.label :address, "Address" %>
+    </div>
+    <div class="unit four-fifths">
+      <%= f.text_field :address, :id => "address" %>
+    </div>
+    <div class="unit one-fifth">
+      <%= f.label :city, "City" %><br>
+    </div>
+    <div class="unit four-fifths">
+      <%= f.text_field :city, :id => "city" %>
+    </div>
+    <div class="unit one-fifth">
+      <%= f.label :state, "State" %><br>
+    </div>
+    <div class="unit four-fifths">
+      <%= f.text_field :state, :id => "state" %>
+    </div>
+    <div class="unit one-fifth">
+      <%= f.label :zipcode, "Zipcode" %><br>
+    </div>
+    <div class="unit four-fifths">
+      <%= f.text_field :zipcode, :id => "zipcode" %>
+    </div>
+  </div> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
