@@ -34,9 +34,9 @@
         <%= line_item.text_field :product_sku %></br>
         <%= line_item.label :product_description %>
         <%= line_item.text_field :product_description %>
+        <%= line_item.remove_nested_fields_link %>
       <% end %>
       <%= f.add_nested_fields_link :line_items %>
-
 
   </div> 
   <div class="actions">
