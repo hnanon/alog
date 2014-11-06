@@ -2,8 +2,6 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
     @vendors = Vendor.all
-    @locations = Location.all
-    @line_items = LineItem.all
   end
 
   def show
@@ -30,6 +28,8 @@ class OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
+    @locations = Location.all
+    @vendors = Vendor.all
   end
 
   def update

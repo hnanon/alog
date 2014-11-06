@@ -1,2 +1,2 @@
 <h2><%= vendor.name %></h2>
-<%= render vendor.locations %>
+<%= render partial: 'locations/location', collection: vendor.locations.distinct, locals: {vendor: vendor} %>

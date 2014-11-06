@@ -1,2 +1,3 @@
 <h3><%= location.address %></h3>
-<%= render location.orders %>
+<%= render partial: 'orders/order', collection: location.orders.where(vendor: vendor) %>
+

@@ -1,4 +1,4 @@
-<%= form_for (@order) do |f| %>
+<%= form_for @order, :html => {:class => 'order-form'} do |f| %>
   <% if @order.errors.any? %>
     <div class="grid wrap">
       <div class="unit wwhole error">
@@ -28,12 +28,16 @@
     <div class="unit one-fifth">
       <%= f.label :vendor, "Vendor" %><br>
     </div>
-      <%= f.fields_for :line_items do |line_item| %>
+      <%= f.nested_fields_for :line_items do |line_item| %>
+        <div class="unit one-fifth">
         <%= line_item.label :product_sku %>
         <%= line_item.text_field :product_sku %></br>
         <%= line_item.label :product_description %>
         <%= line_item.text_field :product_description %>
       <% end %>
+      <%= f.add_nested_fields_link :line_items %>
+
+
   </div> 
   <div class="actions">
     <%= f.submit %>
