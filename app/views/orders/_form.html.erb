@@ -26,16 +26,14 @@
       <%= collection_select( :order, :vendor_id, @vendors, :id, :name ) %>
     </div>
     <div class="unit one-fifth"></div>
-    <div class="unit four-fifths">
-      <%= f.nested_fields_for :line_items do |line_item| %>
-        <%= line_item.label :product_sku %>
-        <%= line_item.text_field :product_sku %></br>
-        <%= line_item.label :product_description %>
-        <%= line_item.text_field :product_description %>
-        <%= line_item.remove_nested_fields_link %>
-      <% end %>
     </div>
-      <%= f.add_nested_fields_link :line_items %>
+    <%= f.fields_for :line_items do |line_item| %>
+      <%= render 'line_item_fields', :f => line_item %>
+    <% end %>
+    <div class="unit four-fifths">
+      <%= link_to_add_association 'add item', f, :line_items %>
+    </div>
+    <%#= f.add_nested_fields_link :line_items %>
 
   </div> 
   <div class="actions">
