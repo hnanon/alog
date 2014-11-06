@@ -25,17 +25,16 @@
     <div class="unit four-fifths">
       <%= collection_select( :order, :vendor_id, @vendors, :id, :name ) %>
     </div>
-    <div class="unit one-fifth">
-      <%= f.label :vendor, "Vendor" %><br>
-    </div>
+    <div class="unit one-fifth"></div>
+    <div class="unit four-fifths">
       <%= f.nested_fields_for :line_items do |line_item| %>
-        <div class="unit one-fifth">
         <%= line_item.label :product_sku %>
         <%= line_item.text_field :product_sku %></br>
         <%= line_item.label :product_description %>
         <%= line_item.text_field :product_description %>
         <%= line_item.remove_nested_fields_link %>
       <% end %>
+    </div>
       <%= f.add_nested_fields_link :line_items %>
 
   </div> 

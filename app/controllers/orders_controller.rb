@@ -49,6 +49,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:location_id, :vendor_id, line_items_attributes: [:product_sku, :product_description])
+    params.require(:order).permit(:location_id, :vendor_id, line_items_attributes: [:id, :product_sku, :product_description, :_destroy])
   end
 end
