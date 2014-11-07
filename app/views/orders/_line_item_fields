@@ -1,5 +1,0 @@
-      <%= f.label :product_sku %>
-      <%= f.text_field :product_sku %></br>
-      <%= f.label :product_description %>
-      <%= f.text_field :product_description %>
-      <%= link_to_remove_association "x", f %>

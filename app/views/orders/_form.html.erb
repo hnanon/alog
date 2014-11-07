@@ -12,31 +12,21 @@
     </div>
   <% end %>
 
-  <div class="grid wrap">
-    <div class="unit one-fifth">
-      <%= f.label :location, "Location" %>
+  <div class="grid wrap no-gutters">
+    <div class="unit whole field">
+      <%= collection_select( :order, :location_id, @locations, :id, :address, {:prompt => "Select a Location"} ) %>
     </div>
-    <div class="unit four-fifths">
-      <%= collection_select( :order, :location_id, @locations, :id, :address ) %>
+    <div class="unit whole field">
+      <%= collection_select( :order, :vendor_id, @vendors, :id, :name, {:prompt => "Select a Vendor"} ) %>
     </div>
-    <div class="unit one-fifth">
-      <%= f.label :vendor, "Vendor" %>
+    <div class="unit whole field">
+      <%= f.fields_for :line_items do |line_item| %>
+        <%= render 'line_item_fields', :f => line_item %>
+      <% end %>
+      <%= link_to_add_association 'Add Another Product', f, :line_items %>
     </div>
-    <div class="unit four-fifths">
-      <%= collection_select( :order, :vendor_id, @vendors, :id, :name ) %>
+    <div class="unit whole actions">
+      <%= f.submit %>
     </div>
-    <div class="unit one-fifth"></div>
-    </div>
-    <%= f.fields_for :line_items do |line_item| %>
-      <%= render 'line_item_fields', :f => line_item %>
-    <% end %>
-    <div class="unit four-fifths">
-      <%= link_to_add_association 'add item', f, :line_items %>
-    </div>
-    <%#= f.add_nested_fields_link :line_items %>
-
-  </div> 
-  <div class="actions">
-    <%= f.submit %>
   </div>
 <% end %>
