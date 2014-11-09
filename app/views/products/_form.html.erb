@@ -23,6 +23,7 @@
       <%= link_to_add_association 'Add Another Variant', f, :variants %>
     </div>
     <div class="unit whole field">
+      <% f.object.build_variant %>
       <%= f.fields_for :variants do |variant| %>
         <%= render 'variant_fields', :f => variant %>
       <% end %>
