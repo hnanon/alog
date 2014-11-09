@@ -1,0 +1,35 @@
+<%= form_for (@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div class="grid wrap">
+      <div class="unit wwhole error">
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid wrap no-gutters">
+    <div class="unit whole field">
+      <%= collection_select( :product, :type_id, @types, :id, :name, {:prompt => "Select a Type"} ) %>
+    </div>
+    <div class="unit whole field">
+      <%= f.fields_for :options do |option| %>
+        <%= render 'option_fields', :f => option %>
+      <% end %>
+      <%= link_to_add_association 'Add Another Variant', f, :variants %>
+    </div>
+    <div class="unit whole field">
+      <%= f.fields_for :variants do |variant| %>
+        <%= render 'variant_fields', :f => variant %>
+      <% end %>
+      <%= link_to_add_association 'Add Another Variant', f, :variants %>
+    </div>
+    <div class="unit whole actions">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

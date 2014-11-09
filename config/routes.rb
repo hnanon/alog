@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  get 'variants/index'
+
+  get 'variants/show'
+
+  get 'variants/new'
+
+  get 'variants/create'
+
+  get 'variants/edit'
+
+  get 'variants/update'
+
+  get 'variants/destroy'
+
+resources :options
+resources :products
+resources :devices
+resources :types
+resources :carriers
+resources :manufacturers
 resources :locations
 resources :vendors
 resources :orders
@@ -7,7 +27,7 @@ resources :orders
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'orders#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -14,12 +14,6 @@
 
   <div class="grid wrap no-gutters">
     <div class="unit whole field">
-      <%= collection_select( :order, :location_id, @locations, :id, :address, {:prompt => "Select a Location"} ) %>
-    </div>
-    <div class="unit whole field">
-      <%= collection_select( :order, :vendor_id, @vendors, :id, :name, {:prompt => "Select a Vendor"} ) %>
-    </div>
-    <div class="unit whole field">
       <%= f.fields_for :line_items do |line_item| %>
         <%= render 'line_item_fields', :f => line_item %>
       <% end %>

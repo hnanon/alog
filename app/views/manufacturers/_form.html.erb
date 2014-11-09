@@ -1,0 +1,23 @@
+<%= form_for (@manufacturer) do |f| %>
+  <% if @manufacturer.errors.any? %>
+    <div class="grid wrap">
+      <div class="unit whole error">
+        <h2><%= pluralize(@manufacturer.errors.count, "error") %> prohibited this manufacturer from being saved:</h2>
+        <ul>
+          <% @manufacturer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid wrap no-gutters">
+    <div class="unit whole field">
+      <%= f.text_field :name, :id => "name" %>
+    </div>
+    <div class="unit whole actions">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

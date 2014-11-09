@@ -1,0 +1,29 @@
+<%= form_for (@device) do |f| %>
+  <% if @device.errors.any? %>
+    <div class="grid wrap">
+      <div class="unit wwhole error">
+        <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
+        <ul>
+          <% @device.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid wrap no-gutters">
+    <div class="unit whole field">
+      <%= collection_select( :device, :carrier_id, @carriers, :id, :name, {:prompt => "Select a Carrier"} ) %>
+    </div>
+    <div class="unit whole field">
+      <%= collection_select( :device, :manufacturer_id, @manufacturers, :id, :name, {:prompt => "Select a Manufacturer"} ) %>
+    </div>
+    <div class="unit whole field">
+      <%= f.text_field :model, :id => "model", placeholder: "Model" %>
+    </div>
+    <div class="unit whole actions">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
