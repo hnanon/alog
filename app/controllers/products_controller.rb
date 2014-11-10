@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.product_options.build
     @devices = Device.all
     @types = Type.all
-    @option = Option.new
     @options = Option.all
     @variants = Variant.all
   end
