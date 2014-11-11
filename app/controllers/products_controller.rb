@@ -1,10 +1,14 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    @options = Option.all
+    @variants = Variant.all
   end
 
   def show
-    @product = Poduct.find(params[:id])
+    @product = Product.find(params[:id])
+    @options = Option.all
+    @variants = Variant.all
   end
 
   def new
@@ -49,6 +53,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :device_id, :type_id, options_attributes: [:id, variants_attributes: [:name, :id, :_destroy]])
+    params.require(:product).permit(:name, :device_id, :type_id, :option_ids, options_attributes: [:id, :_destroy, variants_attributes: [:name, :id, :_destroy]])
   end
 end

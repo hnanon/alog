@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141109213217) do
+ActiveRecord::Schema.define(version: 20141110205305) do
 
   create_table "carriers", force: true do |t|
     t.string   "name"
@@ -86,13 +86,11 @@ ActiveRecord::Schema.define(version: 20141109213217) do
     t.string   "name"
     t.integer  "type_id"
     t.integer  "device_id"
-    t.integer  "option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "products", ["device_id"], name: "index_products_on_device_id"
-  add_index "products", ["option_id"], name: "index_products_on_option_id"
   add_index "products", ["type_id"], name: "index_products_on_type_id"
 
   create_table "types", force: true do |t|

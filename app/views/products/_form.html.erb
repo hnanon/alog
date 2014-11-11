@@ -20,14 +20,7 @@
       <%= f.fields_for :options do |option| %>
         <%= render 'option_fields', :f => option %>
       <% end %>
-      <%= link_to_add_association 'Add Another Variant', f, :variants %>
-    </div>
-    <div class="unit whole field">
-      <% f.object.build_variant %>
-      <%= f.fields_for :variants do |variant| %>
-        <%= render 'variant_fields', :f => variant %>
-      <% end %>
-      <%= link_to_add_association 'Add Another Variant', f, :variants %>
+      <%= link_to_add_association 'Add Another Option', f, :options %>
     </div>
     <div class="unit whole actions">
       <%= f.submit %>

@@ -1,7 +1,3 @@
-<label for="coupon_question">Do you have a coupon?</label>
-<%= check_box_tag(:options) %>
-<input type="text" name="coupon_field" id="coupon_field"/>
-
 <%= form_for @option, :html => {:class => ""} do |f| %>
   <% if @option.errors.any? %>
     <div class="grid wrap">
@@ -18,10 +14,10 @@
 
   <div class="grid wrap no-gutters">
     <div class="unit whole field">
-      <%= collection_select( :option, :id, @options, :id, :name, {:prompt => "Select an Option"} ) %>
+      <%= f.text_field :name, :id => "name" %>
     </div>
-    <div class="unit whole field">
-      <%= f.text_field :variant, :class => "variant", :id => "variant" %>
-    </DIV>
+    <div class="unit whole actions">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

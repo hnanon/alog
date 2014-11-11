@@ -1,2 +1,10 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1>Products</h1>
+
+<h1><%= @product.name %></h1>
+<ul>
+<% @product.options.each do |option| %>
+  <li><%= option.name %><%#= option.variants.map(&:name).join(", ") %></li>
+<% end %>
+</ul>
+
+
