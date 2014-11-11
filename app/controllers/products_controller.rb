@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.product_options.build
+    @product.options.build
     @devices = Device.all
     @types = Type.all
     @options = Option.all
