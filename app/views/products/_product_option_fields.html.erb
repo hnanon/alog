@@ -1,0 +1,10 @@
+<div class="nested-fields project-option-fields">
+	<%= f.input :option_id, collection: @options.map{|o| [o.name, o.id]} %>
+  <%= link_to_remove_association "-", f %>
+  <!-- div id="variants">
+  	< %= f.fields_for :variants do |variant| % >
+      < %= render 'variant_fields', :f => variant % >
+    < % end %>
+    < %= link_to_add_association 'Add Another Variant', f, :variants % >
+  </div -- >
+</div>

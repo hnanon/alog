@@ -36,6 +36,8 @@ gem 'spring',        group: :development
 gem 'pry'
 gem 'nested_form_fields'
 gem 'cocoon'
+# use master version of simple-form for twitter-bootstrap integration
+gem 'simple_form', '~> 3.1.0rc'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

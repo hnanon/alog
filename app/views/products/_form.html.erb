@@ -1,4 +1,4 @@
-<%= form_for (@product) do |f| %>
+<%= simple_form_for (@product) do |f| %>
   <% if @product.errors.any? %>
     <div class="grid wrap">
       <div class="unit wwhole error">
@@ -14,13 +14,19 @@
 
   <div class="grid wrap no-gutters">
     <div class="unit whole field">
-      <%= collection_select( :product, :type_id, @types, :id, :name, {:prompt => "Select a Type"} ) %>
+      <%= f.input :name, required: "required", placeholder: "Enter Product Name" %>
     </div>
+
     <div class="unit whole field">
-      <%= f.fields_for :options do |option| %>
-        <%= render 'option_fields', :f => option %>
+      <%= f.input :type_id, collection: @types.map{|o| [o.name, o.id]} %>
+    </div>
+    <div id="product_options">
+      <%= f.simple_fields_for :product_options do |product_option| %>
+        <%= render 'product_option_fields', :f => product_option %>
       <% end %>
-      <%= link_to_add_association 'Add Another Option', f, :options %>
+      <div class="links">
+        <%= link_to_add_association 'Add Another Option', f, :product_options %>
+      </div>
     </div>
     <div class="unit whole actions">
       <%= f.submit %>
