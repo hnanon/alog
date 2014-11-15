@@ -17,10 +17,10 @@
       <%= collection_select( :product, :type_id, @types, :id, :name, {:prompt => "Select a Type"} ) %>
     </div>
     <div class="unit whole field">
-      <%= f.fields_for :options do |option| %>
-        <%= render 'option_fields', :f => option %>
+      <%= f.fields_for :product_options do |option| %>
+        <%= render 'product_option_fields', :f => option %>
       <% end %>
-      <%= link_to_add_association 'Add Another Option', f, :options %>
+      <%= link_to_add_association 'Add Another Option', f, :product_options %>
     </div>
     <div class="unit whole actions">
       <%= f.submit %>

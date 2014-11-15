@@ -1,0 +1,11 @@
+<div class="nested-fields">
+  <%= f.collection_select( :option_id, @options, :id, :name, {:prompt => "Select an Option"} ) %>
+  <%= link_to_remove_association "-", f %>
+  <div class="unit whole field">
+    <%= f.fields_for :variants do |variant| %>
+      <%= render 'variant_fields', :f => variant %>
+    <% end %>
+  <%= link_to_add_association 'Add Another Variant', f, :variants %>
+  </div>
+
+</div>

@@ -54,6 +54,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :device_id, :type_id, :option_ids, product_options_attributes: [:option_id, :_destroy, variants_attributes: [:name, :option_id, :_destroy]])
+    params.require(:product).permit(:name, :device_id, :type_id, product_options_attributes: [:id, :option_id, :_destroy, variants_attributes: [:id, :name, :_destroy]
+      ])
   end
 end

@@ -2,8 +2,12 @@
 
 <h1><%= @product.name %></h1>
 <ul>
-<% @product.options.each do |option| %>
-  <li><%= option.name %><%#= option.variants.map(&:name).join(", ") %></li>
+<% @product.variants.each do |variant| %>
+  <li><%= variant.name %>, <%= @option.name %><%#= option.variants.map(&:name).join(", ") %></li>
+<% end %>
+
+<% @product.variants.each do |variant| %>
+  <li><%= variant.name %></li>
 <% end %>
 </ul>
 
