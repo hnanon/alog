@@ -14,10 +14,11 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.options.build
+    @product.product_options.build
     @devices = Device.all
     @types = Type.all
-    @options = Option.all
     @variants = Variant.all
+    @options = Option.all
   end
 
   def create
@@ -53,6 +54,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :device_id, :type_id, :option_ids, options_attributes: [:id, :_destroy, variants_attributes: [:name, :id, :_destroy]])
+    params.require(:product).permit(:name, :device_id, :type_id, :option_ids, product_options_attributes: [:option_id, :_destroy, variants_attributes: [:name, :option_id, :_destroy]])
   end
 end

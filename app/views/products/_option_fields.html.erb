@@ -1,5 +1,5 @@
 <div class="nested-fields project-option-fields">
-  <%= collection_select( :product_options, :option_ids, @options, :id, :name, {:prompt => "Select an Option"} ) %>
+  <%= collection_select( :products, :options, @options, :id, :name, {:prompt => "Select an Option"} ) %>
   <%= link_to_remove_association "-", f %>
   <div class="unit whole field">
     <%= f.fields_for :variants do |variant| %>
