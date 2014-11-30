@@ -17,19 +17,16 @@
       <%= f.text_field :name, placeholder: "Name" %>
     </div>
     <div class="unit whole field">
-      <%= f.text_area :description, placeholder: "Description" %>
-    </div>
-    <div class="unit whole field">
-      <%= collection_select( :product, :type_id, @types, :id, :name, {:prompt => "Select a Type"} ) %>
-    </div>
-    <div class="unit whole field">
-      <%= collection_select( :product, :vendor_id, @vendors, :id, :name, {:prompt => "Select a Vendor"} ) %>
-    </div>
-    <div class="unit whole field">
       <%= collection_select( nil, :manufacturer_id, Manufacturer.order(:name), :id, :name, {:prompt => "Select a Manufacturer"} ) %>
     </div>
     <div class="unit whole field">
+      <%#= select :manufacturer_id, grouped_options_for_select(Carrier.order(:name).map{ |group| [group.name, group.manufacturers.map{ |manufacturer| [manufacturer.name, manufacturer.id] } ] }), {:prompt => "Select a Carrier"}, class: 'order_form freelancers_search' %>
+    </div>
+    <div class="unit whole field">
       <%= grouped_collection_select( :product, :device_id, Manufacturer.order(:name), :devices, :name, :id, :model, {prompt: "Select a Device"} ) %>
+    </div>
+    <div class="unit whole field">
+      <%= collection_select( :product, :type_id, @types, :id, :name, {:prompt => "Select a Type"} ) %>
     </div>
     <div class="unit whole field">
       <%= f.fields_for :variants do |variant| %>

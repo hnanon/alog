@@ -1,14 +1,17 @@
 <h1>Products</h1>
 
-<h1><%= @product.name %></h1>
-<ul>
-<% @product.variants.each do |variant| %>
-  <li><%= variant.name %>, <%= @option.name %><%#= option.variants.map(&:name).join(", ") %></li>
-<% end %>
+<%= render 'form_add_to_cart' %>
 
+<h1><%= @product.name %></h1>
 <% @product.variants.each do |variant| %>
-  <li><%= variant.name %></li>
-<% end %>
+<ul>
+  <li><%= variant.name %><%#= option.variants.map(&:name).join(", ") %></li>
+  <li><%= variant.weight %></li>
+  <li><%= variant.weight_uom %></li>
+  <li><%= variant.price %></li>
+  <li><%= human_boolean(variant.taxable) %></li>
 </ul>
+</br>
+<% end %>
 
 

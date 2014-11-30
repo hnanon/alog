@@ -1,18 +1,6 @@
 Rails.application.routes.draw do
-  get 'variants/index'
-
-  get 'variants/show'
-
-  get 'variants/new'
-
-  get 'variants/create'
-
-  get 'variants/edit'
-
-  get 'variants/update'
-
-  get 'variants/destroy'
-
+resources :carts
+resources :line_items
 resources :options
 resources :products
 resources :devices

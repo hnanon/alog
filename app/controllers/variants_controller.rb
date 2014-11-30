@@ -1,4 +1,6 @@
 class VariantsController < ApplicationController
+  before_filter :set_product
+
   def index
   end
 
@@ -32,8 +34,12 @@ class VariantsController < ApplicationController
 
   private
 
-  def variant_params
-    params.require(:variant).permit(:name, :option_id)
-  end
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
+
+    def variant_params
+      params.require(:variant).permit(:name, :option_id)
+    end
 end
 

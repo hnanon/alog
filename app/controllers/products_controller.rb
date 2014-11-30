@@ -1,24 +1,28 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
-    @options = Option.all
     @variants = Variant.all
   end
 
   def show
     @product = Product.find(params[:id])
-    @options = Option.all
-    @variants = Variant.all
+    @product.variants.build
+    #@variants = @product.variants.find(params[:id])
+    @line_item = LineItem.new
   end
 
   def new
     @product = Product.new
-    @product.options.build
-    @product.product_options.build
+    @product.variants.build
+    #@product.carriers.build
+    #@product.manufacturers.build
+    #@product.devices.build
+    #@carriers = Carrier.all
+    @manufacturers = Manufacturer.all
     @devices = Device.all
     @types = Type.all
+    @vendors = Vendor.all
     @variants = Variant.all
-    @options = Option.all
   end
 
   def create
@@ -54,7 +58,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :device_id, :type_id, product_options_attributes: [:id, :option_id, :_destroy, variants_attributes: [:id, :name, :_destroy]
-      ])
+    params.require(:product).permit(:name, :description, :type_id, :vendor_id, :device_id , variants_attributes: [:id, :name, :price, :compare_at_price, :sku, :barcode, :weight, :weight_uom, :taxable, :require_shipping, :inventory_policy, :quantity, :_destroy])
   end
 end

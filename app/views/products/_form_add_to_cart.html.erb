@@ -1,0 +1,10 @@
+<%= form_for (@line_item) do |f| %>
+  <div class="grid wrap no-gutters">
+    <div class="unit whole field">
+      <%= f.collection_radio_buttons(:product, :variant_id, @variants, :id, :name) %>
+    </div>
+    <div class="unit whole actions">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

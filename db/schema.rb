@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115165121) do
+ActiveRecord::Schema.define(version: 20141129221935) do
 
   create_table "carriers", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,9 +42,13 @@ ActiveRecord::Schema.define(version: 20141115165121) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cart_id"
+    t.integer  "product_id"
   end
 
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
 
   create_table "locations", force: true do |t|
     t.string   "address"
@@ -56,31 +65,13 @@ ActiveRecord::Schema.define(version: 20141115165121) do
     t.datetime "updated_at"
   end
 
-  create_table "options", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "orders", force: true do |t|
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "vendor_id"
   end
 
   add_index "orders", ["location_id"], name: "index_orders_on_location_id"
-  add_index "orders", ["vendor_id"], name: "index_orders_on_vendor_id"
-
-  create_table "product_options", force: true do |t|
-    t.integer  "product_id"
-    t.integer  "option_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "product_options", ["option_id"], name: "index_product_options_on_option_id"
-  add_index "product_options", ["product_id"], name: "index_product_options_on_product_id"
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -88,10 +79,13 @@ ActiveRecord::Schema.define(version: 20141115165121) do
     t.integer  "device_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
+    t.integer  "vendor_id"
   end
 
   add_index "products", ["device_id"], name: "index_products_on_device_id"
   add_index "products", ["type_id"], name: "index_products_on_type_id"
+  add_index "products", ["vendor_id"], name: "index_products_on_vendor_id"
 
   create_table "types", force: true do |t|
     t.string   "name"
@@ -103,10 +97,20 @@ ActiveRecord::Schema.define(version: 20141115165121) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "product_option_id"
+    t.integer  "product_id"
+    t.decimal  "price"
+    t.decimal  "compare_at_price"
+    t.string   "sku"
+    t.decimal  "weight"
+    t.integer  "weight_uom",        limit: 255
+    t.string   "barcode"
+    t.boolean  "taxable"
+    t.boolean  "requires_shipping"
+    t.integer  "quantity"
+    t.boolean  "inventory_policy"
   end
 
-  add_index "variants", ["product_option_id"], name: "index_variants_on_product_option_id"
+  add_index "variants", ["product_id"], name: "index_variants_on_product_id"
 
   create_table "vendors", force: true do |t|
     t.string   "name"

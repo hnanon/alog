@@ -1,20 +1,11 @@
 <h1>Products#index</h1>
 <table>
-  <thead>
   <% @products.each do |product| %>
     <tr>
       <td><%= product.name %></td>
       <td>
-        <ul>
-        <% product.options.each do |option| %>
-          <li><%= option.name %></li>
-      </ul>
-      <td>
-        <ul>
-        <% option.variants.each do |variant| %>
-          <li><%= variant.name %></li>
-        <% end %>
-      </ul>
+      <% product.variants.each do |variant| %>
+        <%= variant.name %>
       <% end %>
       </td>
       <td><%= link_to 'Show', product %></td>
@@ -22,4 +13,4 @@
       <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
-  </thrad>
+</table>

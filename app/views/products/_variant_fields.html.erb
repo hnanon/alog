@@ -1,4 +1,13 @@
 <div class="nested-fields">
-  <%= f.text_field :name, placeholder: "Add a variant" %></td>
-  <%= link_to_remove_association "-", f %></td>
+  <%= f.text_field :name, placeholder: "Name" %>
+  <%= f.text_field :price, placeholder: "Price" %>
+  <%= f.text_field :compare_at_price, placeholder: "Compate at Price" %>
+  <%= f.text_field :sku, placeholder: "SKU" %>
+  <%= f.text_field :barcode, placeholder: "Barcode" %>
+  <%= f.text_field :weight, placeholder: "Weight" %>
+  <%= f.select(:weight_uom, Variant.weight_uoms.keys.map {|weight_uom| [weight_uom, weight_uom]}) %>
+  <%= f.check_box :taxable, placeholder: "Charge taxes?" %>
+  <%= f.label :taxable, "Charge taxes?" %>
+
+  <%= link_to_remove_association "-", f %>
 </div>

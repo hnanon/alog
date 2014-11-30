@@ -4,7 +4,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.references :type, index: true
       t.references :device, index: true
-      t.references :option, index: true
 
       t.timestamps
     end
